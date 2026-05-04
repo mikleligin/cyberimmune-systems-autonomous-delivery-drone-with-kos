@@ -318,9 +318,9 @@ int main(void) {
     //If we get here, the drone is able to arm and start the mission
     //The flight is need to be controlled from now on
 
-    setCargoLock(0);
+    setCargoLock(0); // Отключение возможности сброса
+    changeWaypoint(0, 0, 10); // На 0 0 10 мы садимся
     while (true){
-        
         sleep(1000);
     }
 

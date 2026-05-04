@@ -673,7 +673,6 @@ function add_or_update_vehicle_marker(id, lat, lon, alt, azimuth, speed) {
   });
   
   if (!vehicles[id]) {
-    id = id+"123";
     let vehicle = new ol.Feature(new ol.geom.Point([lon, lat]));
     vehicle.setId(`uav${id}`);
     vehicle.setStyle(id === active_id ? vehicleStyle : inactiveVehicleStyle);
