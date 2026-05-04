@@ -318,8 +318,26 @@ int main(void) {
     //If we get here, the drone is able to arm and start the mission
     //The flight is need to be controlled from now on
 
-    setCargoLock(0);
+    setCargoLock(0); // Отключение возможности сброса
+    changeWaypoint(0, 0, 10); // На 0 0 10 мы садимся
+    sendAutopilotCommand(0xEE, 10);
+    int32_t MAX_SPEED = 10;  // 10 m/s
+    int32_t ALT = 1000; // 10 m
     while (true){
+        float speed;
+        float alt;
+        int32_t latitude, longitude, altitude;
+
+        auto res = getSpeed(speed);
+        res =  getPosition(latitude, longitude, altitude);
+        if (speed > MAX_SPEED)
+        {
+            changeSpeed(MAX_SPEED);
+        }
+        if (altitude != ALT )
+        {
+            setAltitude(ALT);
+        }
         
         sleep(1000);
     }
