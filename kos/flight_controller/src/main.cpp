@@ -318,8 +318,11 @@ int main(void) {
     //If we get here, the drone is able to arm and start the mission
     //The flight is need to be controlled from now on
 
-    while (true)
+    setCargoLock(0);
+    while (true){
+        
         sleep(1000);
+    }
 
     return EXIT_SUCCESS;
 }
